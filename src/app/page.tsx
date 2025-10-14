@@ -358,7 +358,7 @@ export default function Home() {
             </button>
           </div>
           {/* Beta Disclaimer */}
-          <div className="text-center mt-1.5 text-[11px] text-gray-400">
+          <div className="text-center mt-1.5 text-[14px] text-gray-400">
             Pulse is in beta and may occasionally make errors. Please verify important information.
           </div>
         </div>
