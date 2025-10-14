@@ -243,7 +243,7 @@ export default function Home() {
           ref={messagesContainerRef}
           className="flex-1 py-4 overflow-y-auto flex flex-col gap-4 relative z-10"
           style={{
-            maxHeight: 'calc(100vh - 160px)',
+            maxHeight: 'calc(100vh - 180px)',
             minHeight: '400px',
             scrollbarWidth: 'thin',
             scrollbarColor: 'rgba(156, 163, 175, 0.5) transparent'
@@ -333,7 +333,7 @@ export default function Home() {
       </div>
 
       {/* Input Container - Full Width */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-sm p-6 border-t border-gray-200/50 shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-sm px-6 pt-4 pb-3 border-t border-gray-200/50 shadow-lg">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center bg-gray-50/90 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-3 gap-4 transition-colors focus-within:border-pink-600">
             <textarea
@@ -354,6 +354,10 @@ export default function Home() {
             >
               {isLoading ? '⏳' : '➤'}
             </button>
+          </div>
+          {/* Beta Disclaimer */}
+          <div className="text-center mt-1.5 text-[11px] text-gray-400">
+            Pulse is in beta and may occasionally make errors. Please verify important information.
           </div>
         </div>
       </div>
