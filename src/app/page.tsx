@@ -198,7 +198,7 @@ export default function Home() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-gray-100 flex flex-col font-sans overflow-x-hidden">
       {/* Background Pattern */}
       <div 
         className="fixed inset-0 opacity-40 pointer-events-none bg-repeat z-0"
@@ -236,12 +236,12 @@ export default function Home() {
       </header>
 
       {/* Chat Container - Full Width */}
-      <div className="flex-1 flex flex-col px-6 mt-16 overflow-hidden h-screen relative z-10">
+      <div className="flex-1 flex flex-col px-4 sm:px-6 mt-16 overflow-hidden h-screen relative z-10 max-w-full">
         
         {/* Messages Container - Auto-hide Scrollbar */}
         <div 
           ref={messagesContainerRef}
-          className="flex-1 py-4 overflow-y-auto flex flex-col gap-4 relative z-10"
+          className="flex-1 py-4 overflow-y-auto overflow-x-hidden flex flex-col gap-4 relative z-10 max-w-full"
           style={{
             maxHeight: 'calc(100vh - 180px)',
             minHeight: '400px',
@@ -278,10 +278,10 @@ export default function Home() {
                 <div
                   key={index}
                   ref={isLastMessage ? lastMessageRef : null}
-                  className={`flex items-start gap-3 relative z-10 ${
+                  className={`flex items-start gap-3 relative z-10 max-w-full ${
                     message.role === 'user' 
-                      ? 'self-end flex-row-reverse max-w-[70%]' 
-                      : 'self-start max-w-[85%]'
+                      ? 'self-end flex-row-reverse max-w-[85%] sm:max-w-[70%]' 
+                      : 'self-start max-w-[90%] sm:max-w-[85%]'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 relative z-10 ${
@@ -291,16 +291,18 @@ export default function Home() {
                   }`}>
                     {message.role === 'user' ? 'You' : 'P'}
                   </div>
-                  <div className="flex flex-col relative z-10">
+                  <div className="flex flex-col relative z-10 min-w-0 max-w-full">
                     <div 
-                      className={`px-5 py-4 rounded-[18px] shadow-sm break-words leading-relaxed relative z-10 ${
+                      className={`px-5 py-4 rounded-[18px] shadow-sm break-words leading-relaxed relative z-10 overflow-wrap-anywhere ${
                         message.role === 'user' 
                           ? 'bg-pink-600 text-white border border-pink-600' 
                           : 'bg-white text-black border border-gray-100'
                       }`}
                       style={{
                         backgroundColor: message.role === 'user' ? '#db2777' : '#ffffff',
-                        position: 'relative'
+                        position: 'relative',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word'
                       }}
                     >
                       {message.content.split('\n').map((line, i) => (
@@ -333,9 +335,9 @@ export default function Home() {
       </div>
 
       {/* Input Container - Full Width */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-sm px-6 pt-4 pb-3 border-t border-gray-200/50 shadow-lg">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center bg-gray-50/90 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-3 gap-4 transition-colors focus-within:border-pink-600">
+      <div className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-sm px-4 sm:px-6 pt-4 pb-3 border-t border-gray-200/50 shadow-lg max-w-full">
+        <div className="max-w-5xl mx-auto w-full">
+          <div className="flex items-center bg-gray-50/90 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-3 gap-4 transition-colors focus-within:border-pink-600 max-w-full">
             <textarea
               ref={textareaRef}
               value={inputValue}
